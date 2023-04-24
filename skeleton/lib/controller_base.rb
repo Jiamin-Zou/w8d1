@@ -2,6 +2,7 @@ require 'active_support'
 require 'active_support/core_ext'
 require 'erb'
 require_relative './session'
+require "byebug"
 
 class ControllerBase
   attr_reader :req, :res, :params
@@ -55,12 +56,11 @@ class ControllerBase
 
     raise "already rendered" if @already_built_response
 
-    controller_name = self.to_s
-
-    array = []
-
-    template_path = ['views', controller_name, "#[template_name}.html.erb"].join("/")    
+    controller_name = self.class.to_s.underscore
     
+    template_path = [File.dirname(__FILE__) , "..",'views', controller_name, "#{template_name}.html.erb"].join("/")
+    
+    # debugger
     template = ERB.new(File.read(template_path))
 
     #render the template the the current binding 
@@ -71,7 +71,7 @@ class ControllerBase
     render_content(html, 'text/html')
 
     @already_built_response = true
-
+    nil
   end
 
   # method exposing a `Session` object
