@@ -15,7 +15,7 @@ GEM
     nio4r (2.5.9)
     puma (6.2.2)
       nio4r (~> 2.0)
-    rack (3.0.7)
+    rack (2.2.6.4)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -32,14 +32,14 @@ GEM
       concurrent-ruby (~> 1.0)
 
 PLATFORMS
-  x86_64-linux
+  x86_64-darwin-21
 
 DEPENDENCIES
   activesupport
   byebug
   puma
-  rack
+  rack (~> 2.2.4)
   rspec (~> 3.1.0)
 
 BUNDLED WITH
-   2.4.10
+   2.4.8
